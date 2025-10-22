@@ -5,6 +5,4 @@ services:
     plan: free
     branch: main
     autoDeploy: true
-    buildCommand: ""
-    startCommand: ""
     dockerfilePath: ./Dockerfile

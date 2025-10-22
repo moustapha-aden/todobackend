@@ -1,20 +1,22 @@
-# Utiliser une image PHP avec Apache
+# On part d'une image PHP avec Apache
 FROM php:8.2-apache
 
-# Installer les extensions nécessaires pour Laravel et MySQL
+# Installer les extensions PHP nécessaires pour Laravel
 RUN docker-php-ext-install pdo pdo_mysql
-
-# Copier les fichiers du projet
-COPY . /var/www/html/
 
 # Installer Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Aller dans le dossier et installer les dépendances
+# Copier le code dans le conteneur
+COPY . /var/www/html/
+
+# Aller dans le dossier du projet
 WORKDIR /var/www/html
+
+# Installer les dépendances Laravel
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
-# Donner les bons droits à Laravel
+# Donner les permissions correctes à Laravel
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Exposer le port 80 (Apache)
