@@ -1,9 +1,10 @@
 services:
   - type: web
     name: todobackend
-    env: php
+    env: docker
     plan: free
-    buildCommand: composer install
-    startCommand: php artisan serve --host=0.0.0.0 --port=$PORT
-    autoDeploy: true
     branch: main
+    autoDeploy: true
+    buildCommand: ""
+    startCommand: ""
+    dockerfilePath: ./Dockerfile
