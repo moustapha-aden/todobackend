@@ -22,7 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'photo', // Ajouté suite à vos requêtes précédentes
-        'role',  // Rôle de l'utilisateur (admin, client, technicien)
+        'role',
         'status', // Statut de l'utilisateur (actif, inactif)
     ];
 
